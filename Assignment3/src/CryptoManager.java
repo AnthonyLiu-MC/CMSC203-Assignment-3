@@ -1,3 +1,15 @@
+/***********************************************************************
+ Class: CMSC203 CRN 46667
+ Program: Assignment # 3
+ Instructor: Dr.Grinberg
+ Description: A program that contains the methods to encrypt/decrypt a plain text
+ string using a Caesar Cipher and Bellaso approaches.  
+ Due: 07/12/2020
+ I pledge that I have completed the programming assignment independently.
+ I have not copied the code from a student or any source.
+ Anthony Liu
+************************************************************************/
+
 public class CryptoManager {
 	
 	private static final char LOWER_BOUND = ' ';
@@ -16,7 +28,7 @@ public class CryptoManager {
 			
 			char currentChar = plainText.charAt(i);
 			
-			if (currentChar > UPPER_BOUND || currentChar < LOWER_BOUND) {
+			if (currentChar > UPPER_BOUND || currentChar < LOWER_BOUND) {  // Checks if current character is within bounds of chars for encryption
 				return false;
 			}
 		}
@@ -32,19 +44,19 @@ public class CryptoManager {
 	 * @return the encrypted string
 	 */
 	public static String encryptCaesar(String plainText, int key) {
-		String caesarEncrypt = "";
+		String caesarEncrypt = "";  //Holds encrypted string
 		
 		for (int i = 0; i < plainText.length(); i++) {
 			
-			int currentChar = (int)plainText.charAt(i);
+			int currentChar = (int)plainText.charAt(i); 
 			
-			int charEncrypt = currentChar + key;
+			int charEncrypt = currentChar + key; // Encrypts current char with key 
 			
-			while (charEncrypt > (int)UPPER_BOUND) {
-				charEncrypt -= RANGE;
+			while (charEncrypt > (int)UPPER_BOUND) {  //Checks if encrypted char is out of bounds after adding key
+				charEncrypt -= RANGE;   			// Gets encrypted char back in acceptable bounds
 			}
 			
-			caesarEncrypt += (char)charEncrypt;
+			caesarEncrypt += (char)charEncrypt;		
 		}
 		
 		return caesarEncrypt;
@@ -59,12 +71,12 @@ public class CryptoManager {
 	 * @return the encrypted string
 	 */
 	public static String encryptBellaso(String plainText, String bellasoStr) {
-		String bellasoEncrypt = "";
+		String bellasoEncrypt = "";  //Holds encrypted string
 		
 		for (int i = 0; i < plainText.length(); i++) {
 			
 			int currentChar = (int)plainText.charAt(i);
-			int currentKeyChar = (int)bellasoStr.charAt(i%bellasoStr.length());
+			int currentKeyChar = (int)bellasoStr.charAt(i%bellasoStr.length());	//determines the key char used to encrypt the current char 
 			
 			int charEncrypt = currentChar + currentKeyChar;
 			
@@ -87,14 +99,14 @@ public class CryptoManager {
 	 * @return the plain text string
 	 */
 	public static String decryptCaesar(String encryptedText, int key) {
-		String decryptedCaesar = "";
+		String decryptedCaesar = "";		//Holds decrypted string 
 		
 		for (int i = 0; i < encryptedText.length(); i++) {
 			
 			int currentChar = (int)encryptedText.charAt(i);
-			int charDecrypt = currentChar - key;
+			int charDecrypt = currentChar - key;		//decrytion happens here
 			
-			while (charDecrypt < (int)LOWER_BOUND) {
+			while (charDecrypt < (int)LOWER_BOUND) {		//corrects character if its out of range
 				charDecrypt += RANGE;
 			}
 			
@@ -113,16 +125,16 @@ public class CryptoManager {
 	 * @return the decrypted string
 	 */
 	public static String decryptBellaso(String encryptedText, String bellasoStr) {
-		String decryptedBellaso = "";
+		String decryptedBellaso = "";		//Holds decrypted string;
 		
 		for (int i = 0; i < encryptedText.length(); i++) {
 			
 			int currentChar = (int)encryptedText.charAt(i);
 			int currentKeyChar = (int)bellasoStr.charAt(i%bellasoStr.length());
 			
-			int charDecrypt = currentChar - currentKeyChar;
+			int charDecrypt = currentChar - currentKeyChar;		//decryption of char happens here
 			
-			while (charDecrypt < (int)LOWER_BOUND) {
+			while (charDecrypt < (int)LOWER_BOUND) {		//corrects character if its out of range
 				charDecrypt += RANGE;
 			}
 			

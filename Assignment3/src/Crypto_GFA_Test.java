@@ -6,7 +6,7 @@ public class Crypto_GFA_Test {
 
 		String str1 = "\"THIS TEST SHOULD SUCCEED\"";
 		String str4 = "HELLO WORLD"; 
-		String str5 = "IFMMP!XPSME";
+		String str5 = "}IFMMP!XPSME";
 
 
 		boolean good = CryptoManager.stringInBounds(str1);	
